@@ -1,0 +1,156 @@
+ Sheet 1- Master Sheet
+The Master Sheet contains a list of jobs that have been scheduled and for which we are receiving a completion email from SB.
+
+
+
+
+This master sheet also denotes the days of run and the benchmark time of completion of the jobs.
+
+The new jobs that are added are expected to be maintained with their run days and expected completion time.
+
+Note : Benchmark time should be in 24 hours format IST timezone (in Hour with leading zero format e.g 1:00:00 should be 01:00:00).
+Sheet 2- Master 2 Sheet
+The second master sheet is the sheet of comparison. This is to reduce the runtime for the code, where each job is checked and then compared for completion status.
+
+It collects the data from the first master sheet about the jobs that are to be run on a particular day.
+
+
+
+
+Note: We don’t need to update Master2 Sheet manually, it will be updated automatically by Google Script. This sheet should never be modified as this will impact on the whole functionality.
+Sheet 3- JobSheet
+This is the actual monitoring sheet with the jobs listed.
+
+
+The new date gets immediately updated as soon as the sheet is triggered. The Box name is read by the script and it will try to find out the completion email in the mailbox which we are receiving from Stonebranch.
+
+If we have received the email, the script will update the time of the email in this sheet, else it will check the completion time in the Master2 sheet. If time is already passed, the script will send an email saying this Box is late.
+
+
+
+
+
+We will receive a summary email three times in a day at around 2 PM, 5 PM and 10 PM. It will also show a remark as Late if the box has completed after the benchmark time.
+
+
+
+
+Steps to view code:
+Open the Google Sheet.
+
+Click on Script Editor. The new tab will be opened, leading to this:
+
+
+You can now start editing the code.
+
+Note : If you wish to make any changes please make a copy of this file and try to do changes, as changes in this original file may impact the behavior of the script. Once the new code is tested you may replace this code with the new code.
+5. Triggers for the sheet:
+
+To trigger the script, click on Edit -> Current Project Triggers.
+
+
+Execution and status will look like below screen.
+
+On the failure of script we will receive a notification email shown below.
+
+6. Prerequisite
+Completion emails from Stonebranch
+
+
+Filter in completion email from Stonebranch
+
+
+
+
+Label with name ‘SB Alerts’
+
+
+
+We have created this filter and label to sort the completion email from Stonebranch (to improve the performance of Script)
+
+NOTE: Add ‘Forcefinish -in:chats’ to ‘has the words filter and create filter with the same label to include all the failed jobs’ action of forcefinishing. (If not included, it will send email saying the job hasn’t completed for the day)
+
+
+
+Access to edit the master sheet (If required)
+Removal or Addition of new box for monitoring
+If a new box needs to be added in this monitoring sheet, please make sure name of box is added in both the sheet i.e. Master and JobSheet and all the necessary data should be updated as mentioned in 1st point.
+
+If you wish to stop monitoring the box, you can either delete the name from the both sheets or you can just remove ‘Yes’ from the days in the master sheet.
+
+
+Adding a new sheet for new year : As a part of year end activity we will rename the existing JobSheet to JobSheet_currentYear (for eg., JobSheet_2020) and we will create a new sheet with the name JobSheet.
+Make sure that the name of the current sheet (in which time needs to be updated) is ‘JobSheet’ as this name is getting used in Script. If the Script does not find this name, it will fail.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Creating Triggers for emails: Create 5 main Triggers - 3 for sending emails for shift update, one to run every 30 minutes and update the email timings in the main JobSheet and one more trigger to focus on the latest date in the main JobSheet.
+
+i) Updating every 30 minutes:
+
+
+
+
+
+
+ii) Sending shift updates:
+
+
+(Change the highlighted time to ‘5pm to 6pm’ and ‘10pm to 11pm’ and create in total 3 filters)
+
+
+
+
+
+
+
+
+
+iii) To open on the latest date i.e. ‘today’
+
+
+And save all 5 filters. Emails will be triggered from the same ID that sets the trigger.
+
+Frequently Asked Questions (FAQs)
+
+How to stop receiving a notification in case of Maintenance / Downtime.
+Ans.	Please update the completion time field in JobSheet manually (Time could be NA) and once activity is completed update the completion time manually.
+
+Example -
+
+
+
+
+In which scenario we will receive a notification?
+Ans.	We will receive an email in two cases
+	A. Box is genuinely running late
+	B. Box is completed in the system but we have not received a completion email from Stonebranch
+In case B please check completion time in Autosys tool and update the time manually in JobSheet and check with ESC for the reason of not receiving a completion email.
+
+
+
+Reference - https://docs.google.com/document/d/19Z1AC_TbXh50YeN-y4hKXcS0V3Juv0vHtFZhHCneHXk/edit?usp=sharing
