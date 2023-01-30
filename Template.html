@@ -1,0 +1,31 @@
+<div dir="ltr">
+<div class="gmail_default" style="">
+<font face="verdana, sans-serif" style="">Hi Team,
+<br><br>Below is the summary of today&#39; s Jobs.<br><br></font>
+<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;width:0px;border-collapse:collapse;border:none">
+<colgroup>
+<col width="400">
+<col width="190">
+<col width="150">
+<col width="90">
+</colgroup>
+<tbody>
+<tr style="height:21px">
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;font-weight:bold;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif">Box Name</font></td>
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;font-weight:bold;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif">Completion Benchmark (in 24 Hrs)</font></td>
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;font-weight:bold;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif">Actual Completion (in 24 Hrs)</font></td>
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;font-weight:bold;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif">Remark</font></td>
+</tr>
+<? for(var i = 0; i < boxData.length; i++) { ?>            
+<tr style="height:21px">
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif"><?= boxData[i].BoName ?></font></td>
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif"><?= boxData[i].ExTime ?></font></td>
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;text-align:right;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif"><?= boxData[i].CoTime ?></font></td>
+<td style="overflow:hidden;padding:2px 3px;vertical-align:bottom;border:1px solid rgb(204,204,204)"><font face="verdana, sans-serif"><?= boxData[i].Remark ?></font></td>    
+</tr>
+<? } ?>            
+</tbody>
+</table>
+<font face="verdana, sans-serif" style=""><br></font>
+</div>
+</div>
